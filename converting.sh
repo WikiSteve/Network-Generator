@@ -8,7 +8,7 @@
 CAPFILES=./*.cap
 PCAPFILES=./*.pcap
 echo "WARNING: All *.cap *.pcap files will be overwritten, no backups made"
-echo "failed conversations will be deleted"
+echo "failed conversions will be deleted"
 echo ""
 echo "Layer 2 information required for first hop"
 echo "Layer 3 information required for final destination"
