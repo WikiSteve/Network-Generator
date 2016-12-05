@@ -1,0 +1,67 @@
+! qos from lab9 INFO-5099 Fanshawe College
+! match-all is DEFAULT
+! these will be used for marking inbound traffic
+class-map match-any critical
+match protocol rtp
+match protocol rtcp
+match protocol h323
+match protocol icmp
+match protocol ospf
+!
+class-map match-any interactive
+match protocol nfs
+match protocol nntp
+match protocol snmp
+!
+class-map match-any web
+match protocol dns
+match protocol http
+match protocol pop3
+match protocol imap
+!
+! class-map for the outgoing traffic
+!
+class-map dscp-ZERO
+match dscp 0 
+!
+class-map dscp-AF32
+match dscp af32
+!
+class-map dscp-AF41
+match dscp af41
+!
+class-map match-any dscp-EF
+match dscp ef
+!
+policy-map markingpolicy
+! setting ToS values to classes above
+! for incoming traffic
+!
+class critical
+set dscp ef
+!
+class interactive
+set dscp af41
+!
+class web
+set dscp af32
+!
+class class-default
+set dscp default
+!
+! policy-map for outgoing
+policy-map llqpolicy
+!
+class dscp-EF
+priority percent 10
+!
+class dscp-AF41
+bandwidth percent 15
+!
+class dscp-AF32
+bandwidth percent 30
+!
+class dscp-ZERO
+bandwidth percent 20
+class class-default
+fair-queue
