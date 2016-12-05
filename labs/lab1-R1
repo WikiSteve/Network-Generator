@@ -37,8 +37,8 @@ ipv6 address 2001::db8:20/64
 !
 interface fastethernet 0/0
 description WAN link
-Bandwidth 10
-Duplex half
+speed 10
+duplex half
 ip address 192.168.0.1 255.255.255.0
 ipv6 address fe80::1 link-local
 ipv6 address 2001:db8:cafe::1/64
