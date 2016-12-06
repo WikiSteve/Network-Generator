@@ -1,6 +1,8 @@
 ! qos from lab9 INFO-5099 Fanshawe College
 ! match-all is DEFAULT
 ! these will be used for marking inbound traffic
+configure t
+!
 class-map match-any critical
 match protocol rtp
 match protocol rtcp
@@ -65,3 +67,5 @@ class dscp-ZERO
 bandwidth percent 20
 class class-default
 fair-queue
+!
+end
